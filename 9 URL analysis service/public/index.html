@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL Analiz Servisi</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+            max-width: 700px;
+            margin: auto;
+        }
+        
+        input {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+        }
+        
+        button {
+            padding: 10px 20px;
+        }
+        
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🔍 URL Analiz Servisi</h1>
+    <input type="text" id="urlInput" placeholder="URL girin..." />
+    <button onclick="analyze()">Analiz Et</button>
+
+    <h2>Sonuç:</h2>
+    <pre id="output">Bekleniyor...</pre>
+
+    <script>
+        async function analyze() {
+            const url = document.getElementById("urlInput").value;
+            const res = await fetch(`/analyze?url=${encodeURIComponent(url)}`);
+            const data = await res.json();
+            document.getElementById("output").textContent = JSON.stringify(data, null, 2);
+        }
+    </script>
+</body>
+
+</html>

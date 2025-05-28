@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canlı Ziyaretçi Sayacı</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <style>
+        body {
+            font-family: Arial;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background: #f0f0f0;
+            margin: 0;
+        }
+        
+        #counter {
+            font-size: 2rem;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #aaa;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="counter">Canlı ziyaretçi sayısı: <span id="count">0</span></div>
+
+    <script>
+        const socket = io();
+        const countEl = document.getElementById("count");
+
+        socket.on('updateUsers', count => {
+            countEl.textContent = count;
+        });
+    </script>
+</body>
+
+</html>

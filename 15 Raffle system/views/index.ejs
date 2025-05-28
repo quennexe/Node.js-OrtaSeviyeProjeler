@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Çekiliş Sistemi</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <h1>Çekilişe Katıl</h1>
+
+    <form action="/join" method="POST">
+        <input type="text" name="name" placeholder="Adınız" required>
+        <button type="submit">Katıl</button>
+    </form>
+
+    <form action="/draw" method="POST">
+        <button type="submit">Kazananı Seç</button>
+    </form>
+
+    <% if (winner) { %>
+        <h2>Kazanan:
+            <%= winner %>
+        </h2>
+        <% } %>
+</body>
+
+</html>
